@@ -1,3 +1,5 @@
+.PHONY: proto run-server run-client docker-build docker-run
+
 proto:
 	protoc --go_out=. --go-grpc_out=. proto/todo.proto
 

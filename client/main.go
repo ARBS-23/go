@@ -5,7 +5,7 @@ import (
 	"log"
 	"time"
 
-	pb "todo"
+	pb "go-grpc-todo-app-docker/todo"
 
 	"google.golang.org/grpc"
 )
