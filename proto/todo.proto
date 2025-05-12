@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package todo;
+
+option go_package = "/todo";  // Match your actual module name
+
+service TodoService {
+  rpc AddTodo (TodoRequest) returns (TodoResponse);
+  rpc ListTodos (Empty) returns (TodoList);
+}
+
+message TodoRequest {
+  string title = 1;
+  string description = 2;
+}
+
+message TodoResponse {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+}
+
+message Empty {}
+
+message TodoList {
+  repeated TodoResponse todos = 1;
+}
