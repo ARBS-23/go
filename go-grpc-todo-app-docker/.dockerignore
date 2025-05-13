@@ -1,2 +1,7 @@
 **/todo.pb.go
 **/todo_grpc.pb.go
+
+.git
+bin/
+*.log
+*.tmp

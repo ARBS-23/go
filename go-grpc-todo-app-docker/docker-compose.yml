@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:14
+    container_name: go-grpc-todo-db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: tododb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - grpc_network
+
+  # For convenience, add pgadmin (optional, can access DB via web UI)
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    networks:
+      - grpc_network
+
+networks:
+  grpc_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
