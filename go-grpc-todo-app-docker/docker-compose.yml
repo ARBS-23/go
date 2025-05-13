@@ -20,10 +20,11 @@ services:
       timeout: 5s
       retries: 5
 
+  # Use the server with the image name explicitly specified
   server:
-    build: .
+    image: go-grpc-todo:latest
     container_name: go-grpc-todo-server
-    command: ["/app/server"]
+    command: ["/app/app_server"]
     ports:
       - "50051:50051"
     depends_on:
