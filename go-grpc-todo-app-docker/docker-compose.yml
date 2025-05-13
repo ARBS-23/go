@@ -14,6 +14,23 @@ services:
       - postgres_data:/var/lib/postgresql/data
     networks:
       - grpc_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d tododb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  server:
+    build: .
+    container_name: go-grpc-todo-server
+    command: ["/app/server"]
+    ports:
+      - "50051:50051"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - grpc_network
 
   # For convenience, add pgadmin (optional, can access DB via web UI)
   pgadmin:

@@ -15,8 +15,8 @@ import (
 )
 
 const (
-	// Replace with your PostgreSQL details
-	postgresUrl = "postgres://user:password@localhost:5432/tododb?sslmode=disable"
+	// Docker compatible PostgreSQL URL
+	postgresUrl = "postgres://user:password@postgres:5432/tododb?sslmode=disable"
 )
 
 type server struct {
